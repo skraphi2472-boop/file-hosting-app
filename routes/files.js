@@ -1,12 +1,11 @@
 import express from 'express';
-import { isAuthenticated, checkUserStatus, isAdmin } from '../middleware/auth.js';
+import { isAuthenticated, checkUserStatus } from '../middleware/auth.js';
 import { uploadLimiter } from '../middleware/rateLimit.js';
 import multer from 'multer';
 import { uploadToS3, deleteFromS3, getSignedUrl } from '../services/s3Service.js';
 import * as fileService from '../services/fileService.js';
 import { sanitizeFileName } from '../middleware/validation.js';
 import dotenv from 'dotenv';
-import mime from 'mime-types';
 
 dotenv.config();
 
@@ -77,15 +76,11 @@ router.get('/', isAuthenticated, async (req, res) => {
 // Download file
 router.get('/:fileId/download', isAuthenticated, checkUserStatus, async (req, res) => {
   try {
-    const file = await fileService.getPublicFile(req.params.fileId);
+    const files = await fileService.getFilesByUserId(req.user.id);
+    const file = files.find(f => f.id == req.params.fileId);
     
     if (!file) {
       return res.status(404).json({ error: 'File not found' });
-    }
-    
-    // Check if user owns the file or it's public
-    if (file.user_id !== req.user.id && !file.is_public) {
-      return res.status(403).json({ error: 'Access denied' });
     }
     
     const signedUrl = await getSignedUrl(file.s3_key);
