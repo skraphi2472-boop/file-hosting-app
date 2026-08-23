@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Hosting - Home</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <h1>FileShare</h1>
+    </div>
+    <div class="navbar-menu" id="navbar-menu">
+      <a href="/" class="nav-link">Home</a>
+      <div id="auth-links">
+        <a href="/login" class="nav-link">Login</a>
+        <a href="/register" class="nav-link btn-primary">Register</a>
+      </div>
+      <div id="user-links" style="display:none;">
+        <a href="/dashboard" class="nav-link">Dashboard</a>
+        <a href="/profile" class="nav-link">Profile</a>
+        <a href="/auth/logout" class="nav-link btn-danger">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Secure File Hosting & Sharing</h1>
+      <p>Upload, manage, and securely share your files with customizable expiration and privacy controls</p>
+      <div class="hero-buttons">
+        <a href="/dashboard" class="btn btn-primary" id="get-started-btn">Get Started</a>
+        <a href="#features" class="btn btn-outline">Learn More</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="features" class="features">
+    <h2>Features</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>🔒 Secure</h3>
+        <p>End-to-end encrypted file storage with secure signed download URLs</p>
+      </div>
+      <div class="feature-card">
+        <h3>⏰ Expiration</h3>
+        <p>Set custom expiration times from 1 hour to never expire</p>
+      </div>
+      <div class="feature-card">
+        <h3>🔗 Public Links</h3>
+        <p>Generate unique public links for easy sharing without login</p>
+      </div>
+      <div class="feature-card">
+        <h3>📊 Analytics</h3>
+        <p>Track download counts and manage file metadata</p>
+      </div>
+      <div class="feature-card">
+        <h3>👥 Privacy</h3>
+        <p>Keep files private or make them publicly accessible</p>
+      </div>
+      <div class="feature-card">
+        <h3>🗑️ Auto Cleanup</h3>
+        <p>Automatic deletion of expired files</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2024 FileShare. All rights reserved.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

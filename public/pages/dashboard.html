@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - FileShare</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <h1>FileShare</h1>
+    </div>
+    <div class="navbar-menu">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/dashboard" class="nav-link active">Dashboard</a>
+      <a href="/profile" class="nav-link">Profile</a>
+      <a href="/auth/logout" class="nav-link btn-danger">Logout</a>
+    </div>
+  </nav>
+
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <h3>Menu</h3>
+      <a href="#upload" class="sidebar-link active">Upload Files</a>
+      <a href="#files" class="sidebar-link">My Files</a>
+      <a href="#stats" class="sidebar-link">Statistics</a>
+    </aside>
+
+    <main class="dashboard-main">
+      <!-- Upload Section -->
+      <section id="upload" class="dashboard-section active">
+        <h2>Upload Files</h2>
+        <div class="upload-area" id="upload-area">
+          <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="17 8 12 3 7 8"></polyline>
+            <line x1="12" y1="3" x2="12" y2="15"></line>
+          </svg>
+          <p>Drag and drop files here or click to select</p>
+          <input type="file" id="file-input" multiple hidden>
+        </div>
+        
+        <div class="upload-options">
+          <div class="form-group">
+            <label for="expiration">File Expiration</label>
+            <select id="expiration" class="form-control">
+              <option value="never">Never Expire</option>
+              <option value="1h">1 Hour</option>
+              <option value="1d">1 Day</option>
+              <option value="7d">7 Days</option>
+              <option value="30d">30 Days</option>
+              <option value="custom">Custom Date</option>
+            </select>
+          </div>
+          
+          <div class="form-group" id="custom-date-group" style="display:none;">
+            <label for="expiration-date">Expiration Date</label>
+            <input type="datetime-local" id="expiration-date" class="form-control">
+          </div>
+          
+          <div class="form-group">
+            <label>
+              <input type="checkbox" id="is-public"> Make Public
+            </label>
+          </div>
+        </div>
+        
+        <div id="upload-progress" style="display:none;">
+          <div class="progress-item">
+            <p id="progress-name"></p>
+            <div class="progress-bar">
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <p id="progress-text">0%</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Files Section -->
+      <section id="files" class="dashboard-section">
+        <h2>My Files</h2>
+        <div class="files-controls">
+          <input type="text" id="files-search" placeholder="Search files..." class="search-input">
+        </div>
+        <div id="files-list" class="files-grid"></div>
+      </section>
+
+      <!-- Statistics Section -->
+      <section id="stats" class="dashboard-section">
+        <h2>Statistics</h2>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <h3>Total Files</h3>
+            <p id="stat-total-files" class="stat-value">0</p>
+          </div>
+          <div class="stat-card">
+            <h3>Storage Used</h3>
+            <p id="stat-storage" class="stat-value">0 GB</p>
+          </div>
+          <div class="stat-card">
+            <h3>Total Downloads</h3>
+            <p id="stat-downloads" class="stat-value">0</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="../js/dashboard.js"></script>
+</body>
+</html>
