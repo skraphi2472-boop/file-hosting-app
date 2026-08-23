@@ -1,0 +1,147 @@
+/* Admin-specific styles */
+.admin-header h1 {
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.reports-container {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.report-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #ffc107;
+}
+
+.report-reason {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background-color: #fff3cd;
+  color: #856404;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.report-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.settings-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+}
+
+.setting-item {
+  margin-bottom: 1.5rem;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+.setting-item label {
+  font-weight: 500;
+}
+
+.setting-item input {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.user-status {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.status-active {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-warned {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status-suspended {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.status-banned {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.role-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.role-admin {
+  background-color: #d1ecf1;
+  color: #0c5460;
+}
+
+.role-moderator {
+  background-color: #cce5ff;
+  color: #004085;
+}
+
+.role-user {
+  background-color: #e2e3e5;
+  color: #383d41;
+}
+
+.logs-container {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.log-entry {
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+  display: grid;
+  grid-template-columns: 150px 150px 200px 1fr 100px;
+  gap: 1rem;
+  align-items: center;
+}
+
+.log-entry:last-child {
+  border-bottom: none;
+}
+
+.log-timestamp {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.log-action {
+  font-weight: 500;
+  color: #007bff;
+}
+
+.expired-table-container,
+.files-table-container,
+.users-table-container {
+  overflow-x: auto;
+}
