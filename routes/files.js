@@ -115,8 +115,8 @@ router.put('/:fileId', isAuthenticated, checkUserStatus, async (req, res) => {
 // Delete file
 router.delete('/:fileId', isAuthenticated, checkUserStatus, async (req, res) => {
   try {
-    const file = await fileService.getFilesByUserId(req.user.id);
-    const fileToDelete = file.find(f => f.id == req.params.fileId);
+    const files = await fileService.getFilesByUserId(req.user.id);
+    const fileToDelete = files.find(f => f.id == req.params.fileId);
     
     if (!fileToDelete) {
       return res.status(404).json({ error: 'File not found' });
