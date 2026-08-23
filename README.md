@@ -55,5 +55,4 @@ A secure, modern file hosting platform with user authentication, file management
 2. Copy `.env.example` to `.env` and configure
 3. Install dependencies: `npm install`
 4. Set up PostgreSQL database
-5. Run migrations: `npm run migrate`
-6. Start the server: `npm start`
+5. Start the server: `npm start`
