@@ -1,0 +1,96 @@
+services:
+  - type: web
+    name: file-hosting-app
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    
+    envVars:
+      - key: NODE_ENV
+        value: production
+      
+      - key: PORT
+        value: 3000
+      
+      - key: BASE_URL
+        fromService:
+          type: web
+          name: file-hosting-app
+          property: url
+      
+      - key: SESSION_SECRET
+        generateValue: true
+      
+      - key: DB_HOST
+        fromDatabase:
+          name: file-hosting-db
+          property: host
+      
+      - key: DB_PORT
+        fromDatabase:
+          name: file-hosting-db
+          property: port
+      
+      - key: DB_NAME
+        fromDatabase:
+          name: file-hosting-db
+          property: database
+      
+      - key: DB_USER
+        fromDatabase:
+          name: file-hosting-db
+          property: user
+      
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: file-hosting-db
+          property: password
+      
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      
+      - key: AWS_ACCESS_KEY_ID
+        sync: false
+      
+      - key: AWS_SECRET_ACCESS_KEY
+        sync: false
+      
+      - key: AWS_REGION
+        value: us-east-1
+      
+      - key: AWS_S3_BUCKET
+        sync: false
+      
+      - key: MAX_FILE_SIZE
+        value: "5368709120"
+      
+      - key: ALLOWED_MIME_TYPES
+        value: "image/jpeg,image/png,image/gif,image/webp,application/pdf,video/mp4,video/webm,audio/mpeg,audio/wav,text/plain,text/csv"
+      
+      - key: RATE_LIMIT_WINDOW_MS
+        value: "900000"
+      
+      - key: RATE_LIMIT_MAX_REQUESTS
+        value: "100"
+      
+      - key: FILE_RETENTION_DAYS
+        value: "7"
+      
+      - key: CLEANUP_INTERVAL_HOURS
+        value: "24"
+      
+      - key: ADMIN_RETENTION_DAYS
+        value: "7"
+
+databases:
+  - name: file-hosting-db
+    databaseName: file_hosting
+    user: dbuser
+    plan: free
+    region: us-east
+    preDeployCommand: psql $DATABASE_URL < database/schema.sql
